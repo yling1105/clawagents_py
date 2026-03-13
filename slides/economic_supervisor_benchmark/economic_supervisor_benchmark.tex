@@ -1,0 +1,198 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+
+\title{Economic Supervisor Benchmark}
+\subtitle{Dynamic routing vs. a fixed frontier model}
+\author{ClawAgents Benchmark}
+\date{March 13, 2026}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Idea}
+  \begin{itemize}
+    \item Goal: reduce spend by routing each turn to an appropriately capable model instead of always paying for a frontier model.
+    \item Tiers in this benchmark:
+    \begin{itemize}
+      \item Simple: \texttt{gpt-5-nano}
+      \item Coding: \texttt{gpt-5-mini}
+      \item Reasoning: \texttt{gpt-5.4}
+    \end{itemize}
+    \item Important: the supervisor does not always try the smallest model first.
+    \item It classifies the recent context once, then sends the request directly to one tier.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Routing Logic}
+  \begin{block}{Decision rule}
+    The supervisor inspects recent messages and chooses one route:
+  \end{block}
+
+  \begin{itemize}
+    \item \textbf{Reasoning} for distress or deep-reasoning signals
+    \item \textbf{Coding} for debugging / code-editing signals
+    \item \textbf{Simple} for low-complexity requests
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \begin{alertblock}{Implication}
+    This is a \textbf{single-shot router}, not a cheap-first retry loop.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Benchmark Setup}
+  \begin{itemize}
+    \item Baseline: fixed \texttt{gpt-5.4}
+    \item Supervisor: \texttt{gpt-5-nano} / \texttt{gpt-5-mini} / \texttt{gpt-5.4}
+    \item Repeats: 3
+    \item Settings: streaming enabled, rethink enabled, trajectory disabled
+    \item Workload: 9 repository tasks covering file reads, summaries, shell execution, testing, and design-level analysis
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \begin{table}
+    \centering
+    \begin{tabular}{lcc}
+      \toprule
+      Scenario & Total spend & Total tokens \\
+      \midrule
+      Fixed model & \$3.197865 & 213{,}191 \\
+      Economic supervisor & \$2.123240 & 215{,}343 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Headline Result}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{block}{Spend}
+      \centering
+      {\LARGE -33.6\%}
+
+      \vspace{0.3em}
+      \$3.197865 $\rightarrow$ \$2.123240
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Tokens}
+      \centering
+      {\LARGE +1.01\%}
+
+      \vspace{0.3em}
+      213{,}191 $\rightarrow$ 215{,}343
+    \end{block}
+  \end{columns}
+
+  \vspace{0.8em}
+
+  \begin{alertblock}{Main takeaway}
+    The supervisor preserved roughly the same token volume while cutting total spend by about one third.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Where the Calls Went}
+  \begin{columns}[T]
+    \column{0.52\textwidth}
+    \begin{table}
+      \centering
+      \begin{tabular}{lrr}
+        \toprule
+        Tier & Calls & Share \\
+        \midrule
+        Simple & 12 & 16.4\% \\
+        Coding & 27 & 37.0\% \\
+        Reasoning & 34 & 46.6\% \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+
+    \column{0.48\textwidth}
+    \begin{table}
+      \centering
+      \begin{tabular}{lr}
+        \toprule
+        Model & Spend \\
+        \midrule
+        \texttt{gpt-5-nano} & \$0.008578 \\
+        \texttt{gpt-5-mini} & \$0.122122 \\
+        \texttt{gpt-5.4} & \$1.992540 \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+  \end{columns}
+
+  \vspace{0.5em}
+
+  \begin{itemize}
+    \item Cheap tiers handled 39 of 73 calls (53.4\%).
+    \item Those 39 calls cost only \$0.130700 total.
+    \item Most spend still came from reasoning turns on \texttt{gpt-5.4}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task-Level Readout}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash}p{0.49\textwidth}rr}
+      \toprule
+      Task & Spend delta & Latency delta \\
+      \midrule
+      Read \texttt{pyproject.toml} version & -90.24\% & +145.43\% \\
+      Run \texttt{pwd} & -97.06\% & +141.50\% \\
+      Summarize test behavior & -59.37\% & -54.43\% \\
+      Run \texttt{pytest} on the supervisor test & -76.16\% & +297.61\% \\
+      Explain latency + cost metrics & -55.63\% & -5.85\% \\
+      Compare fixed vs. supervisor & +22.26\% & +19.44\% \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.4em}
+
+  \begin{itemize}
+    \item 8 of 9 benchmark tasks were cheaper under the supervisor.
+    \item Only 3 of 9 tasks were faster.
+    \item Savings were strongest on simple tool or lookup tasks; latency often increased.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Interpretation}
+  \begin{block}{What worked}
+    The router successfully offloaded a meaningful share of turns to cheaper models, producing large cost reductions on low-complexity tasks.
+  \end{block}
+
+  \begin{block}{What did not improve}
+    Lower spend did not reliably reduce latency. More routing overhead, extra iterations, or weaker cheap-tier performance can erase speed gains.
+  \end{block}
+
+  \begin{alertblock}{Design lesson}
+    Cost and latency must be measured separately. A routing policy can be economically better while still being operationally slower.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Conclusion}
+  \begin{itemize}
+    \item The economic supervisor demonstrated the intended idea: spend frontier-model dollars only when the context appears to justify it.
+    \item On this benchmark, that reduced spend by 33.6\% with almost no change in total token usage.
+    \item The tradeoff was latency: many cheap-route wins were slower overall.
+    \item Next step: improve routing quality and measure answer quality, not just cost and speed.
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -2,6 +2,12 @@ import os
 import time
 import asyncio
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
 from clawagents.config.config import load_config, get_default_model
 from clawagents.providers.llm import create_provider

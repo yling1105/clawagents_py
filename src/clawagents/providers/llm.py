@@ -12,10 +12,12 @@ try:
     from google import genai
     from google.genai import types
     _HAS_GEMINI = True
-except ImportError:
+except Exception as exc:
     genai = None  # type: ignore
     types = None  # type: ignore
     _HAS_GEMINI = False
+    logger = logging.getLogger(__name__)
+    logger.debug("Gemini SDK unavailable during import", exc_info=exc)
 
 from clawagents.config.config import EngineConfig
 

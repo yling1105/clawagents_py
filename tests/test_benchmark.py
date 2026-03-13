@@ -8,30 +8,17 @@ Marked as benchmark; skip with: pytest -m "not benchmark"
 
 import os
 import time
+
 import pytest
-from pathlib import Path
 
-from clawagents.config.config import load_config, get_default_model
-from clawagents.providers.llm import create_provider
-from clawagents.tools.registry import ToolRegistry
-from clawagents.tools.filesystem import filesystem_tools
-from clawagents.tools.exec import exec_tools
-from clawagents.agent import create_claw_agent
-
-
-BENCHMARK_TASKS = [
-    "Read pyproject.toml and tell me the version number.",
-    "Use the execute tool to run `echo benchmark` and return the output.",
-]
+from clawagents.benchmarking import BENCHMARK_TASKS, create_benchmark_agent
+from clawagents.config.config import load_config
 
 
 @pytest.fixture
 def agent():
     """Create agent with streaming enabled (default)."""
-    config = load_config()
-    llm = create_provider(get_default_model(config), config)
-    tools = filesystem_tools + exec_tools
-    return create_claw_agent(model=llm, tools=tools, streaming=True)
+    return create_benchmark_agent(streaming=True)
 
 
 @pytest.mark.benchmark

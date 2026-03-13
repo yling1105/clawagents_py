@@ -224,6 +224,7 @@ class AgentState:
     max_iterations: int
     tool_calls: int
     trajectory_file: str = ""
+    financial_report: dict[str, Any] | None = None
 
 
 BASE_SYSTEM_PROMPT = """You are a ClawAgent, an AI assistant that helps users accomplish tasks using tools. You respond with text and tool calls.
@@ -1568,6 +1569,13 @@ async def run_agent_graph(
                 })
         except Exception:
             logger.debug("PTRL: post-run self-analysis failed", exc_info=True)
+
+    report_getter = getattr(llm, "get_financial_report", None)
+    if callable(report_getter):
+        try:
+            state.financial_report = report_getter()
+        except Exception:
+            logger.debug("Failed to capture financial report from provider", exc_info=True)
 
     emit("agent_done", {
         "tool_calls": state.tool_calls,

@@ -1,0 +1,653 @@
+{
+  "fixed_model": {
+    "settings": {
+      "model": "gpt-5-mini",
+      "streaming": true,
+      "rethink": true,
+      "trajectory": false,
+      "repeats": 1,
+      "task_source": "skill-main",
+      "suite": "automated-only",
+      "success_threshold": 0.75
+    },
+    "total_spent_usd": 0.174402,
+    "total_tokens_used": 87201,
+    "avg_score": 0.4494,
+    "success_rate": 0.4375,
+    "successful_runs": 7,
+    "graded_runs": 16,
+    "cost_per_success_usd": 0.024915,
+    "financial_report": {
+      "total_budget_usd": 1000000.0,
+      "spent_usd": 0.174402,
+      "remaining_budget_usd": 999999.825598,
+      "bankrupt": false,
+      "models": {
+        "gpt-5-mini": {
+          "tokens_consumed": 87201,
+          "calls": 31,
+          "spent_usd": 0.174402,
+          "usd_per_1m_tokens": 2.0
+        }
+      },
+      "unpriced_models": [],
+      "routes": {
+        "fixed": 31
+      },
+      "route_reasons": {
+        "fixed-model": 31
+      }
+    }
+  },
+  "economic_supervisor": {
+    "settings": {
+      "simple_model": "gpt-5-nano",
+      "coding_model": "gpt-5-mini",
+      "reasoning_model": "gpt-5-mini",
+      "streaming": true,
+      "rethink": true,
+      "trajectory": false,
+      "repeats": 1,
+      "task_source": "skill-main",
+      "suite": "automated-only",
+      "success_threshold": 0.75
+    },
+    "total_spent_usd": 0.11194,
+    "total_tokens_used": 91279,
+    "avg_score": 0.3736,
+    "success_rate": 0.375,
+    "successful_runs": 6,
+    "graded_runs": 16,
+    "cost_per_success_usd": 0.018657,
+    "financial_report": {
+      "total_budget_usd": 1000000.0,
+      "spent_usd": 0.11194,
+      "remaining_budget_usd": 999999.88806,
+      "bankrupt": false,
+      "models": {
+        "gpt-5-mini": {
+          "tokens_consumed": 47143,
+          "calls": 12,
+          "spent_usd": 0.094286,
+          "usd_per_1m_tokens": 2.0
+        },
+        "gpt-5-nano": {
+          "tokens_consumed": 44136,
+          "calls": 18,
+          "spent_usd": 0.017654,
+          "usd_per_1m_tokens": 0.4
+        }
+      },
+      "unpriced_models": [],
+      "routes": {
+        "simple": 18,
+        "coding": 10,
+        "reasoning": 2
+      },
+      "route_reasons": {
+        "coding-debugging": 10,
+        "deep-reasoning": 2,
+        "low-complexity": 18
+      },
+      "last_route": {
+        "tier": "simple",
+        "model": "gpt-5-nano",
+        "reason": "low-complexity"
+      }
+    }
+  },
+  "comparison": {
+    "spent_usd": -0.062462,
+    "spent_pct": -35.81,
+    "tokens_used": 4078,
+    "tokens_pct": 4.68,
+    "avg_score": -0.0758,
+    "success_rate": -0.0625
+  },
+  "tasks": [
+    {
+      "task_id": "task_00_sanity",
+      "task_name": "Sanity Check",
+      "fixed_model": {
+        "avg_elapsed_s": 4.812,
+        "avg_spent_usd": 0.003372,
+        "avg_tokens_used": 1686.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.003372
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 1.598,
+        "avg_spent_usd": 0.000674,
+        "avg_tokens_used": 1686.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.000674
+      },
+      "delta": {
+        "spent_usd": -0.002698,
+        "spent_pct": -80.01,
+        "tokens_used": 0.0,
+        "tokens_pct": 0.0,
+        "elapsed_s": -3.215,
+        "elapsed_pct": -66.8,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_01_calendar",
+      "task_name": "Calendar Event Creation",
+      "fixed_model": {
+        "avg_elapsed_s": 27.632,
+        "avg_spent_usd": 0.010858,
+        "avg_tokens_used": 5429.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.010858
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 18.004,
+        "avg_spent_usd": 0.002555,
+        "avg_tokens_used": 6386.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.008303,
+        "spent_pct": -76.47,
+        "tokens_used": 957.0,
+        "tokens_pct": 17.63,
+        "elapsed_s": -9.628,
+        "elapsed_pct": -34.84,
+        "avg_score": -1.0,
+        "success_rate": -1.0
+      }
+    },
+    {
+      "task_id": "task_02_stock",
+      "task_name": "Stock Price Research",
+      "fixed_model": {
+        "avg_elapsed_s": 7.397,
+        "avg_spent_usd": 0.018324,
+        "avg_tokens_used": 9162.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 9.021,
+        "avg_spent_usd": 0.004523,
+        "avg_tokens_used": 4156.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.013801,
+        "spent_pct": -75.32,
+        "tokens_used": -5006.0,
+        "tokens_pct": -54.64,
+        "elapsed_s": 1.624,
+        "elapsed_pct": 21.95,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_04_weather",
+      "task_name": "Weather Script Creation",
+      "fixed_model": {
+        "avg_elapsed_s": 25.685,
+        "avg_spent_usd": 0.011734,
+        "avg_tokens_used": 5867.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.011734
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 18.341,
+        "avg_spent_usd": 0.010902,
+        "avg_tokens_used": 5451.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.010902
+      },
+      "delta": {
+        "spent_usd": -0.000832,
+        "spent_pct": -7.09,
+        "tokens_used": -416.0,
+        "tokens_pct": -7.09,
+        "elapsed_s": -7.344,
+        "elapsed_pct": -28.59,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_08_memory",
+      "task_name": "Memory Retrieval from Context",
+      "fixed_model": {
+        "avg_elapsed_s": 3.362,
+        "avg_spent_usd": 0.006576,
+        "avg_tokens_used": 3288.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 2.476,
+        "avg_spent_usd": 0.001368,
+        "avg_tokens_used": 3421.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.005208,
+        "spent_pct": -79.2,
+        "tokens_used": 133.0,
+        "tokens_pct": 4.05,
+        "elapsed_s": -0.887,
+        "elapsed_pct": -26.37,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_09_files",
+      "task_name": "File Structure Creation",
+      "fixed_model": {
+        "avg_elapsed_s": 10.046,
+        "avg_spent_usd": 0.008242,
+        "avg_tokens_used": 4121.0,
+        "avg_score": 0.8571,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.008242
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 12.83,
+        "avg_spent_usd": 0.008488,
+        "avg_tokens_used": 4244.0,
+        "avg_score": 0.8571,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.008488
+      },
+      "delta": {
+        "spent_usd": 0.000246,
+        "spent_pct": 2.98,
+        "tokens_used": 123.0,
+        "tokens_pct": 2.98,
+        "elapsed_s": 2.784,
+        "elapsed_pct": 27.71,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_10_workflow",
+      "task_name": "Multi-step API Workflow",
+      "fixed_model": {
+        "avg_elapsed_s": 2.071,
+        "avg_spent_usd": 0.006572,
+        "avg_tokens_used": 3286.0,
+        "avg_score": 0.1667,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 6.673,
+        "avg_spent_usd": 0.001701,
+        "avg_tokens_used": 4251.0,
+        "avg_score": 0.1667,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.004871,
+        "spent_pct": -74.12,
+        "tokens_used": 965.0,
+        "tokens_pct": 29.37,
+        "elapsed_s": 4.602,
+        "elapsed_pct": 222.2,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_11_clawdhub",
+      "task_name": "Create Project Structure",
+      "fixed_model": {
+        "avg_elapsed_s": 17.562,
+        "avg_spent_usd": 0.009886,
+        "avg_tokens_used": 4943.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.009886
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 12.334,
+        "avg_spent_usd": 0.009532,
+        "avg_tokens_used": 4766.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.009532
+      },
+      "delta": {
+        "spent_usd": -0.000354,
+        "spent_pct": -3.58,
+        "tokens_used": -177.0,
+        "tokens_pct": -3.58,
+        "elapsed_s": -5.228,
+        "elapsed_pct": -29.77,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_12_skill_search",
+      "task_name": "Search and Replace in Files",
+      "fixed_model": {
+        "avg_elapsed_s": 3.421,
+        "avg_spent_usd": 0.007002,
+        "avg_tokens_used": 3501.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 4.114,
+        "avg_spent_usd": 0.00713,
+        "avg_tokens_used": 3565.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": 0.000128,
+        "spent_pct": 1.83,
+        "tokens_used": 64.0,
+        "tokens_pct": 1.83,
+        "elapsed_s": 0.694,
+        "elapsed_pct": 20.28,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_13_image_gen",
+      "task_name": "AI Image Generation",
+      "fixed_model": {
+        "avg_elapsed_s": 42.386,
+        "avg_spent_usd": 0.015432,
+        "avg_tokens_used": 7716.0,
+        "avg_score": 0.1667,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 12.497,
+        "avg_spent_usd": 0.001295,
+        "avg_tokens_used": 3238.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.014137,
+        "spent_pct": -91.61,
+        "tokens_used": -4478.0,
+        "tokens_pct": -58.04,
+        "elapsed_s": -29.888,
+        "elapsed_pct": -70.52,
+        "avg_score": -0.1667,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_16_email_triage",
+      "task_name": "Email Inbox Triage",
+      "fixed_model": {
+        "avg_elapsed_s": 3.305,
+        "avg_spent_usd": 0.007584,
+        "avg_tokens_used": 3792.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 33.243,
+        "avg_spent_usd": 0.01759,
+        "avg_tokens_used": 10550.0,
+        "avg_score": 0.9545,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.01759
+      },
+      "delta": {
+        "spent_usd": 0.010006,
+        "spent_pct": 131.94,
+        "tokens_used": 6758.0,
+        "tokens_pct": 178.22,
+        "elapsed_s": 29.939,
+        "elapsed_pct": 905.95,
+        "avg_score": 0.9545,
+        "success_rate": 1.0
+      }
+    },
+    {
+      "task_id": "task_17_email_search",
+      "task_name": "Email Search and Summarization",
+      "fixed_model": {
+        "avg_elapsed_s": 3.747,
+        "avg_spent_usd": 0.00757,
+        "avg_tokens_used": 3785.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 13.145,
+        "avg_spent_usd": 0.006304,
+        "avg_tokens_used": 5348.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.001266,
+        "spent_pct": -16.72,
+        "tokens_used": 1563.0,
+        "tokens_pct": 41.29,
+        "elapsed_s": 9.398,
+        "elapsed_pct": 250.79,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_16_market_research",
+      "task_name": "Competitive Market Research",
+      "fixed_model": {
+        "avg_elapsed_s": 52.053,
+        "avg_spent_usd": 0.032732,
+        "avg_tokens_used": 16366.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.032732
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 56.741,
+        "avg_spent_usd": 0.034058,
+        "avg_tokens_used": 19667.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.034058
+      },
+      "delta": {
+        "spent_usd": 0.001326,
+        "spent_pct": 4.05,
+        "tokens_used": 3301.0,
+        "tokens_pct": 20.17,
+        "elapsed_s": 4.688,
+        "elapsed_pct": 9.01,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_18_spreadsheet_summary",
+      "task_name": "CSV and Excel Data Summarization",
+      "fixed_model": {
+        "avg_elapsed_s": 60.165,
+        "avg_spent_usd": 0.013994,
+        "avg_tokens_used": 6997.0,
+        "avg_score": 1.0,
+        "success_rate": 1.0,
+        "successful_runs": 1,
+        "graded_runs": 1,
+        "cost_per_success_usd": 0.013994
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 11.127,
+        "avg_spent_usd": 0.002093,
+        "avg_tokens_used": 5231.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.011901,
+        "spent_pct": -85.04,
+        "tokens_used": -1766.0,
+        "tokens_pct": -25.24,
+        "elapsed_s": -49.038,
+        "elapsed_pct": -81.51,
+        "avg_score": -1.0,
+        "success_rate": -1.0
+      }
+    },
+    {
+      "task_id": "task_21_openclaw_comprehension",
+      "task_name": "OpenClaw Report Comprehension",
+      "fixed_model": {
+        "avg_elapsed_s": 3.359,
+        "avg_spent_usd": 0.007456,
+        "avg_tokens_used": 3728.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 5.996,
+        "avg_spent_usd": 0.001726,
+        "avg_tokens_used": 4315.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.00573,
+        "spent_pct": -76.85,
+        "tokens_used": 587.0,
+        "tokens_pct": 15.75,
+        "elapsed_s": 2.637,
+        "elapsed_pct": 78.52,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    {
+      "task_id": "task_22_second_brain",
+      "task_name": "Second Brain Knowledge Persistence",
+      "fixed_model": {
+        "avg_elapsed_s": 5.418,
+        "avg_spent_usd": 0.007068,
+        "avg_tokens_used": 3534.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "economic_supervisor": {
+        "avg_elapsed_s": 13.729,
+        "avg_spent_usd": 0.002001,
+        "avg_tokens_used": 5004.0,
+        "avg_score": 0.0,
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "graded_runs": 1,
+        "cost_per_success_usd": null
+      },
+      "delta": {
+        "spent_usd": -0.005067,
+        "spent_pct": -71.69,
+        "tokens_used": 1470.0,
+        "tokens_pct": 41.6,
+        "elapsed_s": 8.31,
+        "elapsed_pct": 153.37,
+        "avg_score": 0.0,
+        "success_rate": 0.0
+      }
+    }
+  ]
+}
